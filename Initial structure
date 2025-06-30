@@ -1,0 +1,18 @@
+jibran-plant-disease-project-detection/
+│
+├── app/
+│   ├── __init__.py
+│   ├── routes.py
+│   └── model/
+│       └── model.h5      # (placeholder for your trained model)
+│
+├── static/
+│   └── (your CSS, JS, images)
+│
+├── templates/
+│   └── (your HTML files)
+│
+├── README.md
+├── requirements.txt      # (add Flask, TensorFlow, Keras, etc.)
+├── .gitignore
+└── run.py                # (Flask entry point)
