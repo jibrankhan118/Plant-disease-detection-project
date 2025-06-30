@@ -1,0 +1,27 @@
+import tensorflow as tf
+import numpy as np
+import cv2
+import sys
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--image', required=True, help='Path to input leaf image')
+args = parser.parse_args()
+
+# Load model
+model = tf.keras.models.load_model('../model/plant_disease_model.h5')
+
+# Class labels (example)
+labels = ['Apple___Black_rot', 'Corn___Common_rust', 'Tomato___Early_blight', 'Tomato___Late_blight', 'Healthy']
+
+# Preprocess image
+img = cv2.imread(args.image)
+img = cv2.resize(img, (128, 128))
+img = img / 255.0
+img = np.expand_dims(img, axis=0)
+
+# Predict
+prediction = model.predict(img)
+predicted_class = labels[np.argmax(prediction)]
+
+print(f"Predicted Disease: {predicted_class}")
